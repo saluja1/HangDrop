@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<HTML>
+ <HEAD>
+  <TITLE>HTML5 Demo</TITLE>
+  <!--<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <script type="text/javascript" src="http://d3c7o8x2i12pye.cloudfront.net/LayoutSL2015/jquery-1.9.1.min.js"></script>
+  <style>
+  #forwardbutton{visibility:hidden}
+  </style>
+ </HEAD>
+
+ <BODY> 
+
+ <center>
+
+
+<script>
+var HDObj = {
+okLabel: "   OK   ", // Please pass text for Ok Label
+errMsg1: "Please drag each card over the given scale.", // Please pass text for error meessage
+loadingText : "Loading Image...",
+appFontSize : 14,
+cardArray: [1,2,3,4,5,6,8,9,10,11,12,13,14,15,16,17,18,19], // Please pass pre-codes as per list provided in S6 - Rows
+cardText: ["Option 1","Option 2","Option 3","Option 4","Option 5","Option 6","Option 7","Option 8","Option 9","Option 10","Option 11","Option 12","Option 13","Option 14","Option 15","Option 16","Option 17","Option 18","Option 19"], //Please pass the text in the same order of precodes passed to the cardArray parameter//
+cardWidth: 120,
+cardHeight: 80
+};
+$(document).on("ready", function(){$("#HDparent").HangDropPlugin(HDObj)});
+</script>
+<div id="HDparent" align="center"><img src="http://dcqhpema7gk9a.cloudfront.net/IND/HTML5/loader.gif" style="margin:100px"></div><br>
+<link rel="stylesheet" href="http://dcqhpema7gk9a.cloudfront.net/IND/HTML5/ISDDefaultStyles.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<!--[if lt IE 9]><script src="http://dcqhpema7gk9a.cloudfront.net/IND/HTML5/PIE_IE678.js"></script><![endif]-->
+<script src="custom.js"></script>
+
+
+	
+ <form action="http://www.google.co.in">
+ <input type="button" value="   >>   " id="forwardbutton" />
+ </form>
+ </center>
+  <script>
+  function setValue(a,b)
+  {
+	alert(a);
+	alert(b);
+	document.getElementById("forwardbutton").click();
+  }
+  </script>
+ </BODY>
+</HTML>
