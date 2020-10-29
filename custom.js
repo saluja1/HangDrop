@@ -17,7 +17,7 @@ function createDialog(b, a) {
             top: -1,
             width: c.width() + 10,
             height: c.height() + 10,
-            backgroundImage: "url(" + protocolRef + "//dcqhpema7gk9a.cloudfront.net/IND/HTML5/transparent.png)",
+            backgroundImage: "url(transparent.png)",
             position: "absolute",
             zIndex: 3E3
         });
@@ -76,7 +76,7 @@ $.fn.HangDropPlugin = function(HDObj)
 		cardWidth: 120,
 		cardHeight: 80,
 		cardDistance: 10,
-		smallImagePath: "//media7.surveycenter.com/1634457/HTML5/Graph/demo1/images/",
+		smallImagePath: "",
 		largeImagePath: "",
 		imageExtension: ".jpg",
 		calc: 0,
@@ -139,7 +139,7 @@ $.fn.HangDropPlugin = function(HDObj)
 
 
 		backImage = $("<img>");
-		backImage.prop({id: "backImage" + _obj.primeKey, src: protocolRef + "//media7.surveycenter.com/1634457/HTML5/Graph/demo1/images/background.jpg"});		
+		backImage.prop({id: "backImage" + _obj.primeKey, src: "background.jpg"});		
 		backImage.css({width: _obj.backImageWidth, height: _obj.backImageHeight, position: "absolute", left: (_obj.stageWidth-_obj.backImageWidth)/2, top: 10});
 		rootDiv.append(backImage);
 
@@ -172,17 +172,17 @@ $.fn.HangDropPlugin = function(HDObj)
 
 		var scale = $("<div>");
 		scale.prop({id: "scale" + _obj.primeKey});
-		scale.css({width: _obj.scaleWidth, height: 15, backgroundColor: "#ffffff", backgroundImage: "url(" + protocolRef + "//dcqhpema7gk9a.cloudfront.net/IND/HTML5/sliderBG.jpg)", position: "absolute", left: _obj.posX, top: _obj.posY,visibility:"hidden"});
+		scale.css({width: _obj.scaleWidth, height: 15, backgroundColor: "#ffffff", position: "absolute", left: _obj.posX, top: _obj.posY,visibility:"hidden"});
 		scale.addClass("shadowClass");
 		$("#rootDiv" + _obj.primeKey).append(scale);
 		
 		var scaleCapLeft = $("<div>");
-		scaleCapLeft.css({backgroundImage: "url(" + protocolRef + "//dcqhpema7gk9a.cloudfront.net/IND/HTML5/sliderCapLeft.png)", height: 22, width: 20, position: "absolute", left: -16});
+		scaleCapLeft.css({height: 22, width: 20, position: "absolute", left: -16});
 		scale.append(scaleCapLeft);
 
 		var scaleCapRight = $("<div>");
 		scaleCapRight.prop({id: "scaleCapRight" + _obj.primeKey});
-		scaleCapRight.css({backgroundImage: "url(" + protocolRef + "//dcqhpema7gk9a.cloudfront.net/IND/HTML5/sliderCap.png)", height: 22, width: 20, position: "absolute", left: _obj.scaleWidth});
+		scaleCapRight.css({height: 22, width: 20, position: "absolute", left: _obj.scaleWidth});
 		scale.append(scaleCapRight);
 
 		if(!document.addEventListener && window.PIE)
@@ -274,49 +274,19 @@ $.fn.HangDropPlugin = function(HDObj)
 			cardContent.html(_obj.cardText[i]);
 			cardContent.css({position: "relative", width: _obj.cardWidth - 4, top: _obj.imageHeight + 20, color:"#ffffff", fontWeight:"bold", fontSize : _obj.appFontSize + "px"});
 
-			cardImage = $("<img>");
-			cardImage.prop({id: "cImage" + _obj.primeKey + _obj.cardArray[i]});
-			cardImage.css({width: _obj.imageWidth, height: _obj.imageHeight, background: "url(" + protocolRef + "//dcqhpema7gk9a.cloudfront.net/IND/HTML5/loader.gif)", backgroundRepeat: "no-repeat", backgroundPosition: "center center", position: "absolute", left: 10, top: 10});
-			//card.append(cardImage);
 
 			card.append(cardContent);
 			cardContent.css({top: Math.round((_obj.cardHeight - cardContent.height())/2)});
 
-			if(_obj.largeImagePath != "")
-			{
-				zoomIcon = $("<img>");
-				zoomIcon.prop({id: "zoomIcon" + _obj.primeKey + _obj.cardArray[i], src: protocolRef + "//dcqhpema7gk9a.cloudfront.net/IND/HTML5/zoom.png"});
-				zoomIcon.css({position: "absolute", left: _obj.cardWidth - 30, top: _obj.imageHeight - 10, cursor: "pointer"});
-				card.append(zoomIcon);
-
-				zoomImage = $("<img>");
-				zoomImage.prop({id: "zImage" + _obj.primeKey + _obj.cardArray[i]});
-				zoomImage.css({border: "solid 1px #ababab", boxShadow: "1px 1px 1px rgba(60,60,60,1)", position: "absolute", visibility: "hidden", width:220, height:220});
-				$("#rootDiv" + _obj.primeKey).append(zoomImage);
-			}
 
 			if(document.addEventListener)
 			{
 				card.addClass("msTouchClass");
 			}
 
-			//cardImage.on("load", {_obj: _obj}, loadHandler);
-			/*if(_obj.largeImagePath != "")
-			{
-				zoomImage.on("load", {_obj: _obj}, loadHandler);
-				zoomIcon.on("mouseup", showZoomHandler);
-				zoomImage.on("click", hideZoomHandler);
-			}*/
-
-			cardImage.prop({src: protocolRef + _obj.smallImagePath + _obj.cardArray[i] + _obj.imageExtension});
-
-			if(_obj.largeImagePath != "")
-			{
-				zoomImage.prop({src: protocolRef + _obj.largeImagePath + _obj.cardArray[i] + _obj.imageExtension});
-			}
 
 			pin = $("<img>");
-			pin.prop({id: "pin" + _obj.primeKey + _obj.cardArray[i], src: protocolRef + "//dcqhpema7gk9a.cloudfront.net/IND/HTML5/pin.png"});
+			pin.prop({id: "pin" + _obj.primeKey + _obj.cardArray[i], src: "pin.png"});
 			pin.css({width: 21, height: 26, position: "absolute"});
 			card.append(pin);
 			pin.css({left: _obj.cardWidth/2 - pin.width()/2, top: -pin.height() + 1});
@@ -390,7 +360,7 @@ $.fn.HangDropPlugin = function(HDObj)
 		}
 
 		ref.data({droppedInside: false});
-		$("#pin" + _obj.primeKey + refId).prop({src: protocolRef + "//dcqhpema7gk9a.cloudfront.net/IND/HTML5/pin.png"});
+		$("#pin" + _obj.primeKey + refId).prop({src: "pin.png"});
 		$("#scaleNumTip" + _obj.primeKey).css({visibility: "hidden"});
 
 		var counter = (_obj.scaleStart == 0)? 0 : _obj.scaleStart;
@@ -404,7 +374,6 @@ $.fn.HangDropPlugin = function(HDObj)
 			{
 				scalePointRef.css({backgroundColor: "#ff0000"});
 				ref.data({droppedInside: scalePointRef});
-				$("#pin" + _obj.primeKey + refId).prop({src: protocolRef + "//dcqhpema7gk9a.cloudfront.net/IND/HTML5/pinRed.png"});
 				
 				if(scalePointRef.data("hasTextNode") == false)
 				{
@@ -435,7 +404,7 @@ $.fn.HangDropPlugin = function(HDObj)
 
 		setTimeout(function(){_obj.dragFlag = false}, 200);
 		
-		$("#pin" + _obj.primeKey + refId).prop({src: protocolRef + "//dcqhpema7gk9a.cloudfront.net/IND/HTML5/pin.png"});
+		$("#pin" + _obj.primeKey + refId).prop({src: "pin.png"});
 		$("#scaleNumTip" + _obj.primeKey).css({visibility: "hidden"});
 		if(ref.data("droppedInside").length && ref.data("droppedInside").data("hasTextNode"))
 		{
@@ -562,40 +531,7 @@ $.fn.HangDropPlugin = function(HDObj)
 		}
 	}
 
-	function showZoomHandler(pEvent)
-	{
-		if(_obj.dragFlag == false && !$("#zoomCard" + _obj.primeKey).length)
-		{
-			var ref = $(pEvent.currentTarget);
-			var refId = ref.prop("id").substr(ref.prop("id").indexOf("_") + 1, 8);
-			_obj.zoomRef = $("#zImage" + _obj.primeKey + refId);
-			
-			var zoomCard = $("<div>");
-			zoomCard.prop({id: "zoomCard" + _obj.primeKey});
-			zoomCard.css({width: $("#rootDiv" + _obj.primeKey).width(), height: $("#rootDiv" + _obj.primeKey).height(), background: "url(" + protocolRef + "//dcqhpema7gk9a.cloudfront.net/IND/HTML5/transparent.png)", position: "absolute", left: 0, top: 0, zIndex: _obj.dep++});
-			$("#rootDiv" + _obj.primeKey).append(zoomCard);
 
-			_obj.zoomRef.css({visibility: "visible", display: "block", zIndex: _obj.dep++, left: Math.round(($("#rootDiv" + _obj.primeKey).width() - _obj.zoomRef.width())/2), top: Math.round(($("#rootDiv" + _obj.primeKey).height() - _obj.zoomRef.height())/2)});
-
-			var closeB = $("<img>");
-			closeB.prop({id: "closeB" + _obj.primeKey, src: protocolRef + "//dcqhpema7gk9a.cloudfront.net/IND/HTML5/close.png"});
-			closeB.css({cursor: "pointer", position: "absolute", left: _obj.zoomRef.position().left + _obj.zoomRef.width() - 20, top: _obj.zoomRef.position().top - 10, zIndex: _obj.dep++});
-			$("#rootDiv" + _obj.primeKey).append(closeB);
-
-			zoomCard.on("click", hideZoomHandler);
-			closeB.on("click", hideZoomHandler);
-		}
-	}
-
-	function hideZoomHandler(pEvent)
-	{
-		if($("#zoomCard" + _obj.primeKey).length)
-		{
-			$("#zoomCard" + _obj.primeKey).remove();
-			$("#closeB" + _obj.primeKey).remove();
-			_obj.zoomRef.css({display: "none"});
-		}
-	}
 
 	function submitHandler()
 	{
